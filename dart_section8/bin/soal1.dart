@@ -1,23 +1,18 @@
-Future <List> soal(List listData, int kali){
-  var data = [];
-  int i = 0;
-  do {
-    int perkalian = listData[i] * kali;
-    data.add(perkalian);
-    i++;
-  } while (i < listData.length);
-  return Future.delayed(Duration(seconds: 1), (){
-    return data;
-  });
-}
+void main(List<String> arguments) async{
+  
+  // int => List<int> => Future<List<int>> => Function<Future<List<int>>>
 
-void main () async {
-  int kali = 5;
-  var list = [10, 22, 34, 46, 58, 62, 74, 81, 25, 15];
-  var newList = await soal(list, kali);
+  Future<List<int>> fungsiProses (List <int> listData, int pengali) async{
+    List <int> listBaru = [];  
+    
+    for (int element in listData) {
+      listBaru.add(element * pengali);
+    }
+    
+    return listBaru;
+  }
 
-  print(list.length);
-  print(list);
-  print(newList.length);
-  print(newList);
+  List<int> newList = await fungsiProses([1, 2, 3, 4], 5);
+
+  print("Hasil : $newList");
 }
